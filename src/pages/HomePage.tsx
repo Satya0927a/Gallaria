@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react"
+import { HeartOff } from "lucide-react"
 import Gallary from "../components/Gallary"
 import Navbar from "../components/Navbar"
 import useFetchPhotos from "../hooks/useFetchPhotos"
@@ -40,6 +41,12 @@ const HomePage = () => {
         favorites={favPhotos}
         onToggleFavorite={toggleFavorite}
         emptyMessage={view === "favorites" ? "No favorite photos yet" : "No photos found"}
+        emptyDescription={
+          view === "favorites"
+            ? "Tap the heart on any photo to save it here."
+            : "Try adjusting your search or check back later."
+        }
+        emptyIcon={view === "favorites" ? HeartOff : undefined}
       />
     </div>
   )
