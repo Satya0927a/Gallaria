@@ -1,4 +1,4 @@
-import { HeartIcon } from "lucide-react"
+import { HeartIcon, SearchIcon } from "lucide-react"
 
 const Navbar = ({ view, setView, setSearch }: {
   view: "all" | "favorites",
@@ -34,13 +34,16 @@ const Navbar = ({ view, setView, setSearch }: {
         </section>
 
         <section className="w-full sm:w-auto">
-          <input
-            onChange={(e) => { setSearch(e.target.value.trim()) }}
-            className="w-full rounded-xl border p-2 sm:w-64"
-            type="text"
-            placeholder="Search author name"
-            aria-label="Search by author name"
-          />
+          <div className="relative w-full sm:w-64">
+            <SearchIcon className="absolute left-2 top-1/2 size-4 -translate-y-1/2 text-neutral-400" />
+            <input
+              onChange={(e) => { setSearch(e.target.value.trim()) }}
+              className="w-full rounded-xl border p-2 pl-8"
+              type="text"
+              placeholder="Search author name"
+              aria-label="Search by author name"
+            />
+          </div>
         </section>
       </div>
     </nav>

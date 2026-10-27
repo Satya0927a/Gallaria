@@ -1,75 +1,97 @@
-# React + TypeScript + Vite
+# Photo Gallery
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive photo gallery built with React, TypeScript, and Vite. Browse images from [Lorem Picsum](https://picsum.photos/), search by photographer name, and save your favorites locally.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Browse Photos**: View a curated collection of images fetched from the Picsum Photos API
+- **Search Functionality**: Filter photos by photographer/author name
+- **Favorites**: Mark photos as favorites with a heart icon, persisted in localStorage
+- **Responsive Design**: Optimized grid layout that adapts across mobile, tablet, and desktop devices
+- **Clean UI**: Built with Tailwind CSS for a modern, polished look
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- [React 19](https://react.dev/) - UI library
+- [TypeScript](https://www.typescriptlang.org/) - Type safety
+- [Vite](https://vitejs.dev/) - Build tool and dev server
+- [React Router](https://reactrouter.com/) - Client-side routing
+- [Tailwind CSS 4](https://tailwindcss.com/) - Styling
+- [Axios](https://axios-http.com/) - HTTP client
+- [Lucide React](https://lucide.dev/) - Icon library
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- [Node.js](https://nodejs.org/) (v18 or higher)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Installation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd whatever
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+2. Install dependencies:
+```bash
+npm install
+```
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Development
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Start the development server with hot module replacement:
+```bash
+npm run dev
+```
+
+The application will be available at `http://localhost:5173`.
+
+### Build
+
+Create a production build:
+```bash
+npm run build
+```
+
+The built files will be output to the `dist/` directory.
+
+### Preview
+
+Preview the production build locally:
+```bash
+npm run preview
+```
+
+### Linting
+
+Run ESLint to check code quality:
+```bash
+npm run lint
+```
+
+## Project Structure
 
 ```
+src/
+├── components/     # Reusable UI components
+│   ├── Gallary.tsx # Photo grid display
+│   ├── ImageCard.tsx
+│   ├── Loader.tsx
+│   └── Navbar.tsx  # Navigation and search
+├── hooks/          # Custom React hooks
+│   ├── useFavorites.ts    # Favorites state management with localStorage
+│   └── useFetchPhotos.ts  # Photo fetching logic
+├── pages/          # Page components
+│   └── HomePage.tsx
+├── services/       # API services
+│   └── FetchImage.ts      # Picsum API integration
+├── App.tsx         # App routing configuration
+└── main.tsx        # Application entry point
+```
+
+## API
+
+This project uses the [Picsum Photos API](https://picsum.photos/) to fetch placeholder images. Photos are fetched from `https://picsum.photos/v2/list?limit=30`.
