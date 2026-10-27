@@ -1,9 +1,12 @@
-import { useState } from "react"
 import { Heart } from "lucide-react"
 import type { imageData } from "../services/FetchImage"
 
-const ImageCard = ({ image }: { image: imageData }) => {
-  const [liked, setLiked] = useState(false)
+const ImageCard = ({ image, isFavorite, onToggleFavorite }: {
+  image: imageData,
+  isFavorite: boolean,
+  onToggleFavorite: (photo: imageData) => void
+}) => {
+  const liked = isFavorite
 
   return (
     <figure className="group relative mb-5 break-inside-avoid overflow-hidden rounded-2xl bg-neutral-900 shadow-md ring-1 ring-black/5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl">
@@ -28,7 +31,7 @@ const ImageCard = ({ image }: { image: imageData }) => {
 
         <button
           type="button"
-          onClick={() => setLiked((prev) => !prev)}
+          onClick={() => onToggleFavorite(image)}
           aria-label={liked ? "Unlike image" : "Like image"}
           aria-pressed={liked}
           className="shrink-0 rounded-full bg-white/15 p-2.5 text-white backdrop-blur-md ring-1 ring-white/25 transition duration-300 hover:bg-white/25 hover:ring-white/40 active:scale-90"
