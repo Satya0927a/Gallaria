@@ -12,7 +12,13 @@ const Gallary = ({ photos, loading, error, favorites, onToggleFavorite, emptyMes
   emptyMessage?: string
 }) => {
   if (loading) {
-    return <Loader />
+    return (
+      <div className=" min-h-dvh px-5 flex items-center justify-center">
+        <div className=" flex gap-2 justify-center items-center p-2 rounded-2xl ">
+          <Loader />
+        </div>
+      </div>
+    )
   }
   if (error) {
     return (
@@ -25,7 +31,7 @@ const Gallary = ({ photos, loading, error, favorites, onToggleFavorite, emptyMes
     )
   }
   return (
-    <div className=" min-h-dvh pt-22 px-5">
+    <div className=" min-h-dvh px-5 pt-32 sm:pt-22">
       <section className="columns-1 gap-5 sm:columns-2 lg:columns-3 xl:columns-4">
         {photos.length != 0 ? photos.map((d) => (
           <ImageCard
