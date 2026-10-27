@@ -3,6 +3,7 @@ import Loader from "./Loader"
 import { GlobeOffIcon, ImageOff } from "lucide-react"
 import type { LucideIcon } from "lucide-react"
 import type { imageData } from "../services/FetchImage"
+import { memo } from "react"
 
 const Gallary = ({ photos, loading, error, favorites, onToggleFavorite, emptyMessage = "No photos found", emptyDescription = "Try adjusting your search.", emptyIcon: EmptyIcon = ImageOff }: {
   photos: imageData[],
@@ -60,4 +61,4 @@ const Gallary = ({ photos, loading, error, favorites, onToggleFavorite, emptyMes
     </div>
   )
 }
-export default Gallary
+export default memo(Gallary)

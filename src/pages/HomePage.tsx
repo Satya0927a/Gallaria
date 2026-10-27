@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react"
+import { useCallback, useEffect, useMemo, useState } from "react"
 import { HeartOff } from "lucide-react"
 import Gallary from "../components/Gallary"
 import Navbar from "../components/Navbar"
@@ -28,9 +28,9 @@ const HomePage = () => {
     return sourcePhotos.filter((photo) => photo.author.toLowerCase().startsWith(search.toLowerCase()))
   }, [view, favPhotos, photos, search])
 
-  const toggleFavorite = (photo: imageData) => {
+  const toggleFavorite = useCallback((photo: imageData) => {
     dispatch({ type: "TOGGLE_FAVORITE", payload: photo })
-  }
+  }, [dispatch])
   return (
     <div>
       <Navbar view={view} setView={setView} search={search} setSearch={setSearch} />
