@@ -1,4 +1,6 @@
-const Navbar = () => {
+const Navbar = ({ search, setSearch }: {
+  search: string, setSearch: React.Dispatch<React.SetStateAction<string>>
+}) => {
   return (
     <nav className=" fixed top-0 bg-white w-full flex justify-between p-5 items-center">
       <section>
@@ -10,7 +12,7 @@ const Navbar = () => {
       </section>
 
       <section className="flex gap-2">
-        <input className="border p-2" type="text" placeholder="Search" />
+        <input onChange={(e) => { setSearch(e.target.value.trim()) }} className="border p-2" type="text" placeholder="Search" />
         <button className="bg-gray-200 p-2 rounded-sm">filter</button>
       </section>
     </nav>

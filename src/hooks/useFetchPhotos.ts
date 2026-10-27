@@ -9,8 +9,6 @@ const useFetchPhotos = () => {
   useEffect(() => {
     const runFetch = async () => {
       try {
-        setLoading(true);
-        setError(null);
         const data = await fetchImage()
         setPhotos(data)
       } catch (error: unknown) {

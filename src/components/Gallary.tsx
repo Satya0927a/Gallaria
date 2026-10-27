@@ -1,10 +1,9 @@
 import ImageCard from "./ImageCard"
 import Loader from "./Loader"
-import useFetchPhotos from "../hooks/useFetchPhotos"
 import { GlobeOffIcon } from "lucide-react"
+import type { imageData } from "../services/FetchImage"
 
-const Gallary = () => {
-  const { photos, loading, error } = useFetchPhotos()
+const Gallary = ({ photos, loading, error }: { photos: imageData[], loading: boolean, error: string | null }) => {
   if (loading) {
     return <Loader />
   }
@@ -20,12 +19,9 @@ const Gallary = () => {
   }
   return (
     <div className=" min-h-dvh pt-22 px-5">
-      {loading && <Loader />}
-      {!loading && (
-        <section className="columns-1 gap-5 sm:columns-2 lg:columns-3 xl:columns-4">
-          {photos.map((d) => <ImageCard key={d.id} image={d} />)}
-        </section>
-      )}
+      <section className="columns-1 gap-5 sm:columns-2 lg:columns-3 xl:columns-4">
+        {photos.length != 0 ? photos.map((d) => <ImageCard key={d.id} image={d} />) : <p>No photos found</p>}
+      </section>
     </div>
   )
 }
